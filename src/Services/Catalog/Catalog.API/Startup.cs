@@ -1,4 +1,5 @@
 using Catalog.Persistence.Database;
+using Catalog.Services.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,7 @@ namespace Catalog.API
               )
             );
 
+            services.AddTransient<IProductQueryService, ProductQueryService>();
             services.AddControllers();
         }
 
