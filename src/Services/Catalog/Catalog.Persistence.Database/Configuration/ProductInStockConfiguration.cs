@@ -8,22 +8,24 @@ namespace Catalog.Persistence.Database.Configuration
 {
     public class ProductInStockConfiguration
     {
-        public ProductInStockConfiguration(EntityTypeBuilder<ProductInStock> entityBulder)
+        public ProductInStockConfiguration(EntityTypeBuilder<ProductInStock> entityBuilder)
         {
-            entityBulder.HasKey(x => x.ProductInStockId);
+            entityBuilder.HasKey(x => x.ProductInStockId);
 
             var stocks = new List<ProductInStock>();
             var random = new Random();
 
             for (var i = 1; i <= 100; i++)
             {
-                stocks.Add(new ProductInStock()
+                stocks.Add(new ProductInStock
                 {
                     ProductInStockId = i,
                     ProductId = i,
                     Stock = random.Next(0, 100)
                 });
-            }           
+            }
+
+            entityBuilder.HasData(stocks);
         }
 
     }

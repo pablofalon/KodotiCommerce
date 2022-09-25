@@ -28,6 +28,8 @@ namespace Catalog.Persistence.Database.Configuration
                     Price = random.Next(100,1000)
                 }); 
             }
+
+            entityBuilder.HasData(products);
         }
     }
 }

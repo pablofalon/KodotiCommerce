@@ -9,7 +9,7 @@ namespace Catalog.Persistence.Database
 {
     public class ApplicationDbContext: DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base()
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
@@ -27,6 +27,7 @@ namespace Catalog.Persistence.Database
 
         private void ModelConfig(ModelBuilder modelBuilder) {
             new ProductConfiguration(modelBuilder.Entity<Product>());
+            new ProductInStockConfiguration(modelBuilder.Entity<ProductInStock>());
 
         }
     }
